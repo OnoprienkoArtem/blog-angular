@@ -11,6 +11,9 @@ const routes: Routes = [
       { path: '', component: HomePageComponent },
       { path: 'post/:id', component: PostPageComponent }
     ]
+  },
+  {
+    path: '', loadChildren: './admin/admin.module#AdminModule'
   }
 ];
 
