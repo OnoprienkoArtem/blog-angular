@@ -3,6 +3,4 @@ export interface Environment {
   apiKey: string;
 }
 
-export interface FbAuthResponse {
-  idToken: string;
-}
+
