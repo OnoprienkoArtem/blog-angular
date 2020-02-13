@@ -32,6 +32,9 @@ export class AuthService {
 
   private setToken(response: FbAuthResponse) {
     console.log(response);
+    const expDate = new Date(new Date().getTime() + +response.expiresId * 1000);
+    localStorage.setItem('fb-token', response.idToken);
+    localStorage.setItem('fb-token-exp', expDate.toString());
   }
 
 }
