@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [],
   imports: [
-    HttpClientModule
+    HttpClientModule,
+    QuillModule.forRoot()
   ],
-  exports: [HttpClientModule]
+  exports: [HttpClientModule, QuillModule]
 })
 export class SharedModule { }
