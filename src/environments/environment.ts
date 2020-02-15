@@ -6,7 +6,8 @@ import { Environment } from './interface';
 
 export const environment: Environment = {
   production: false,
-  apiKey: ''
+  apiKey: '',
+  fbDbUrl: 'https://angular-blog-6d9fb.firebaseio.com/'
 };
 
 /*
