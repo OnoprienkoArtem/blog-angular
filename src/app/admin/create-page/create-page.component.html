@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="submit()">
   <h1>Создание нового поста</h1>
 
   <div
@@ -14,13 +14,13 @@
       *ngIf="form.get('title').touched && form.get('title').invalid"
     >
       <small *ngIf="form.get('title').errors.required"
-        >Поле email обязательно
+        >Введите название поста
       </small>
     </div>
   </div>
 
   <div class="form-control">
-    <label>Контент поста</label>
+    <label>Контент поста:</label>
   </div>
 
   <div
@@ -36,7 +36,7 @@
       *ngIf="form.get('author').touched && form.get('author').invalid"
     >
       <small *ngIf="form.get('author').errors.required"
-        >Поле email обязательно
+        >Введите автора поста
       </small>
     </div>
   </div>

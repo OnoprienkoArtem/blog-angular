@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormContorl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-page',
@@ -13,6 +13,18 @@ export class CreatePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      title: new FormContorl(null, Validators.required),
+      text: new FormContorl(null, Validators.required),
+      author: new FormContorl(null, Validators.required)
+    });
+
+  }
+
+  submit() {
+    if (this.form.invalid) {
+      return;
+    }
   }
 
 }
