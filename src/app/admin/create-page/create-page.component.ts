@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-page.component.scss']
 })
 export class CreatePageComponent implements OnInit {
+
+  form: FormGroup;
 
   constructor() { }
 
