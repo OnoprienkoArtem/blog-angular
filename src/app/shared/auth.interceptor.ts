@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { AuthService } from '../admin/shared/services/auth.service';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
 @Injectable();
 export class AuthInterceptor implements HttpInterceptor {
@@ -17,7 +18,21 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       });
     }
-    return next.handle(req);
+    return next.handle(req)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.log('[Interceptor]', error);
+          if (error.status === 401) {
+            this.auth.logout();
+            this.router.navigate(['/admin', 'login'], {
+              queryParams: {
+                authFailed: true
+              }
+            });
+          }
+          return throwError(error);
+        })
+      );
   }
 
 }
