@@ -5,7 +5,8 @@ import { Observable, throwError, Subject } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
+
 export class AuthService {
 
   public error$: Subject<string> = new Subject<string>();

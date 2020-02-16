@@ -5,7 +5,7 @@ import { Post, FbCreateResponse } from './interfaces';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 
-@Injectable({ provideIn: 'root' });
+@Injectable({providedIn: 'root'})
 
 export class PostsService {
   constructor(private http: HttpClient) { }
