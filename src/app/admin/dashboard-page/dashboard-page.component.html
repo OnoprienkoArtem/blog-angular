@@ -9,12 +9,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+    <tr *ngFor="let post of posts; let idx = index">
+      <td>{{ idx + 1 }}</td>
+      <td>{{ post.author }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.date | date: 'medium' }}</td>
+      <td>
+        <button class="btn btn-link"></button>
+        <a (click)="remove(post.id)">Удалить</a>
+      </td>
     </tr>
   </tbody>
 </table>
