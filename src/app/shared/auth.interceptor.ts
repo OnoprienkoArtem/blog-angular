@@ -22,14 +22,14 @@ export class AuthInterceptor implements HttpInterceptor {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.log('[Interceptor]', error);
-          if (error.status === 401) {
-            this.auth.logout();
-            this.router.navigate(['/admin', 'login'], {
-              queryParams: {
-                authFailed: true
-              }
-            });
-          }
+          // if (error.status === 401) {
+          //   this.auth.logout();
+          //   this.router.navigate(['/admin', 'login'], {
+          //     queryParams: {
+          //       authFailed: true
+          //     }
+          //   });
+          // }
           return throwError(error);
         })
       );

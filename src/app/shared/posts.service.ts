@@ -16,7 +16,7 @@ export class PostsService {
         map((response: FbCreateResponse) => {
           return {
             ...post,
-            id: Response.name,
+            id: response.name,
             date: new Date(post.date)
           };
         }));

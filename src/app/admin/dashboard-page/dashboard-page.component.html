@@ -13,9 +13,9 @@
       <td>{{ idx + 1 }}</td>
       <td>{{ post.author }}</td>
       <td>{{ post.title }}</td>
-      <td>{{ post.date | date: 'medium' }}</td>
+      <td>{{ post.date | date: "medium" }}</td>
       <td>
-        <button class="btn btn-link"></button>
+        <button class="btn btn-link" [routerLink]="['/admin', 'post', post.id, 'edit']">Открыть</button>
         <a (click)="remove(post.id)">Удалить</a>
       </td>
     </tr>
