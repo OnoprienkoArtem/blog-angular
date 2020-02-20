@@ -42,8 +42,7 @@
       *ngIf="form.get('password').touched && form.get('password').invalid"
     >
       <small *ngIf="form.get('password').errors.required"
-        >Поле password обязательно</small
-      >
+        >Поле password обязательно</small>
       <small *ngIf="form.get('password').errors.minlength">
         Пароль должен быть не менее
         {{ form.get("password").errors.minlength.requiredLength }}
