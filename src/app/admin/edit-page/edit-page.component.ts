@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { PostsService } from 'src/app/shared/posts.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-page',
@@ -15,7 +16,11 @@ export class EditPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(() => {
+    this.route.params.pipe(
+      switchMap((params: Params) => {
+        return this.postsService.getById(params['id'])
+      })
+    ).subscribe((post: Post) => {
 
     });
   }
