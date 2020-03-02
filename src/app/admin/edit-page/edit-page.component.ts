@@ -13,6 +13,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class EditPageComponent implements OnInit {
 
   form: FormGroup;
+  post: Post;
+  submitted = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,9 +24,10 @@ export class EditPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.pipe(
       switchMap((params: Params) => {
-        return this.postsService.getById(params['id'])
+        return this.postsService.getById(params['id']);
       })
     ).subscribe((post: Post) => {
+      this.post = post;
       this.form = new FormGroup({
         title: new FormControl(post.title, Validators.required),
         text: new FormControl(post.text, Validators.required)
@@ -33,7 +36,19 @@ export class EditPageComponent implements OnInit {
   }
 
   submit() {
+    if (this.form.invalid) {
+      return;
+    }
 
+    this.submitted = true;
+
+    this.postsService.update({
+      ...this.post,
+      title: this.form.value.title,
+      author: this.post.author
+    }).subscribe(() => {
+      this.submitted = false;
+    });
   }
 
 }
