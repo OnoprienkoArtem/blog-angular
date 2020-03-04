@@ -22,10 +22,10 @@ export class AlertService {
   }
 
   warning(text: string) {
-
+    this.alert$.next({type: 'warning', text});
   }
 
   danger(text: string) {
-
+    this.alert$.next({type: 'danger', text});
   }
 }
