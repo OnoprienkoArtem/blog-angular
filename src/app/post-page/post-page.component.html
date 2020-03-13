@@ -1,15 +1,15 @@
 <div class="post" *ngIf="post$ | async as post; loading">
   <div class="header">
-    <h1>Post title</h1>
+    <h1>{{ post.title }}</h1>
     <button routerLink="/" class="btn btn-link">На главную</button>
   </div>
   <div class="info">
-    <strong>автор</strong>
-    <small>10.02.2020</small>
+    <strong>{{ post.author }}</strong>
+    <small>{{ post.date | date:'medium':null:'ru' }}</small>
   </div>
 
   <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae explicabo quibusdam at tempora doloremque ea aliquid minus a. Molestias possimus perferendis quasi, consectetur incidunt aliquid praesentium dignissimos consequatur dicta amet.</p>
+    <quill-view-html [content]="post.text"></quill-view-html>
   </div>
 </div>
 
