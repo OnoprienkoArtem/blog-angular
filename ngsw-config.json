@@ -28,5 +28,17 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "firebase-post",
+      "urls": [
+        "https://angular-blog-359ae.firebaseio.com/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "3600"
+      }
+    }
   ]
 }
